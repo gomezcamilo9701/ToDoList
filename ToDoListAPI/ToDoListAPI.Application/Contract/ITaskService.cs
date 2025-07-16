@@ -1,4 +1,4 @@
-﻿using ToDoListAPI.Application.Dto;
+﻿using ToDoListAPI.Application.Dto.Task;
 
 namespace ToDoListAPI.Application.Contract
 {

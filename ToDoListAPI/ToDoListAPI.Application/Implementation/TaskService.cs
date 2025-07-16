@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using ToDoListAPI.Application.Contract;
-using ToDoListAPI.Application.Dto;
+﻿using ToDoListAPI.Application.Contract;
+using ToDoListAPI.Application.Dto.Task;
 using ToDoListAPI.Domain.Models;
 using ToDoListAPI.Infrastructure.Contract;
 
