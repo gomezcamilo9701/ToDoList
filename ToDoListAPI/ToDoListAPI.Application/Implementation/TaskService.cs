@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDoListAPI.Application.Contract;
+﻿using ToDoListAPI.Application.Contract;
 using ToDoListAPI.Application.Dto;
 using ToDoListAPI.Domain.Models;
-using ToDoListAPI.Infrastructure.Implementation;
+using ToDoListAPI.Infrastructure.Contract;
 
 namespace ToDoListAPI.Application.Implementation
 {

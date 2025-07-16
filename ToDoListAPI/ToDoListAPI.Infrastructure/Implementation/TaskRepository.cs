@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ToDoListAPI.Domain.Models;
-using ToDoListAPI.Infrastructure.Implementation;
+using ToDoListAPI.Infrastructure.Contract;
 
-namespace ToDoListAPI.Infrastructure.Contract
+namespace ToDoListAPI.Infrastructure.Implementation
 {
     public class TaskRepository : ITaskRepository
     {

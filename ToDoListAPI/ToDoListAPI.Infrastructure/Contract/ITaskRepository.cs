@@ -1,6 +1,6 @@
 ﻿using ToDoListAPI.Domain.Models;
 
-namespace ToDoListAPI.Infrastructure.Implementation
+namespace ToDoListAPI.Infrastructure.Contract
 {
     public interface ITaskRepository
     {
