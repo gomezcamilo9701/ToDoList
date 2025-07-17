@@ -1,6 +1,8 @@
-# (To-Do List) by Camilo Gomez Cristancho
+# 📝 To-Do List
 
-Este repositorio contiene una aplicación de lista de tareas desarrollada como parte de la evaluación técnica para la empresa **ON OFF Soluciones en Línea**.
+### Autor: Camilo Gómez Cristancho
+
+Esta aplicación permite a los usuarios autenticarse, gestionar tareas (CRUD), visualizar notificaciones y ver estadísticas clave desde un dashboard. Fue desarrollada como parte del proceso técnico para **ON OFF Soluciones en Línea**, aplicando buenas prácticas en arquitectura y diseño de software.
 
 La solución incluye un **frontend en Angular 17** y un **backend en .NET 9**, con funcionalidades de autenticación, gestión de tareas, notificaciones y un dashboard con métricas clave.
 
@@ -22,7 +24,7 @@ La solución incluye un **frontend en Angular 17** y un **backend en .NET 9**, c
 
 ---
 
-## 🛠️ Instrucciones de Configuración
+## Instrucciones de Configuración
 
 ### 1. Configuración de la Base de Datos
 
@@ -53,23 +55,52 @@ npm install
 ng serve
 ```
 
-### Decisiones Técnicas Tomadas
-## Backend (.NET 9)
-DB First con Scaffold: Generación de modelos desde SCRIPT.sql con Scaffold-DbContext.
+## Decisiones Técnicas Tomadas
+### Backend (.NET 9)
+- DB First con Scaffold: Generación de modelos desde SCRIPT.sql con Scaffold-DbContext.
 
-Arquitectura DDD (Domain-Driven Design): Separación en capas Application, Domain, Infrastructure.
+- Arquitectura DDD (Domain-Driven Design): Separación en capas Application, Domain, Infrastructure.
 
-AutoMapper: Mapear DTOs ↔ Entidades de dominio, reduciendo código repetitivo.
+- AutoMapper: Mapear DTOs ↔ Entidades de dominio, reduciendo código repetitivo.
 
-Inyección de Dependencias (DI): Uso del contenedor nativo de .NET.
+- Inyección de Dependencias (DI): Uso del contenedor nativo de .NET.
 
-Autenticación JWT: Protección de endpoints mediante tokens con middleware personalizado.
+- Autenticación JWT: Protección de endpoints mediante tokens con middleware personalizado.
 
-## Frontend (Angular 17)
-Angular Standalone Components: Componentes sin NgModules para arquitectura más modular y ligera.
+### Frontend (Angular 17)
+- Angular Standalone Components: Componentes sin NgModules para arquitectura más modular y ligera.
 
-Angular Material: Diseño UI consistente y accesible.
+- Angular Material: Diseño UI consistente y accesible.
 
-Tailwind CSS: Estilizado rápido y responsive (utility-first).
+- Tailwind CSS: Estilizado rápido y responsive (utility-first).
 
-Diseño Responsive: Uso de clases como md:grid-cols-4, flex, justify-center, etc.
+- Diseño Responsive: Uso de clases como md:grid-cols-4, flex, justify-center, etc.
+
+## Cómo Ejecutar el Proyecto
+Configure la base de datos como se explicó anteriormente.
+
+### Inicie el backend:
+
+```bash
+cd ToDoListApi
+dotnet run
+```
+
+## Inicie el frontend:
+
+```bash
+cd ToDoListFrontend
+ng serve
+```
+
+## Registrese
+
+Debe crear un usuario y contraseña para poder ingresar.
+
+## ✅ Notas Finales
+
+Este proyecto fue desarrollado aplicando principios de clean code, DI y una arquitectura sólida tanto en backend como frontend.
+
+📬 Para dudas o comentarios, no dudes en contactarme.
+
+📅 **Fecha de entrega:** 18 de julio de 2025
