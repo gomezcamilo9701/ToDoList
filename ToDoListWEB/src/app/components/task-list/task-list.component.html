@@ -1,0 +1,39 @@
+<mat-toolbar class="bg-gray-800 text-white flex justify-between">
+  <span class="text-xl font-bold">My Tasks</span>
+  <button mat-icon-button (click)="onLogout()" class="text-white">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="p-6 bg-gray-100 min-h-screen">
+  <div class="flex justify-center mb-6">
+    <mat-card class="w-full max-w-md p-4">
+      <mat-card-content>
+        <div class="flex flex-col gap-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput [(ngModel)]="newTask.description" placeholder="Task description">
+          </mat-form-field>
+          <button mat-raised-button color="primary" class="bg-blue-500 hover:bg-blue-600" (click)="addTask()">Add Task</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-list class="w-full max-w-2xl mx-auto">
+    <mat-list-item *ngFor="let task of tasks" class="mb-2">
+      <div class="flex justify-between items-center w-full bg-white p-4 rounded-lg shadow">
+        <div>
+          <h3 class="text-lg font-semibold">{{ task.title }}</h3>
+          <p class="text-gray-600">{{ task.description }}</p>
+        </div>
+        <div class="flex gap-2">
+          <button mat-icon-button color="primary" (click)="editTask(task)" [disabled]="task.isCompleted">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -1,0 +1,26 @@
+<mat-toolbar class="bg-gray-800 text-white flex items-center">
+  <h1 class="text-xl font-bold truncate">ToDoList | Coding Assessment On Off | Camilo Gomez Cristancho</h1>
+</mat-toolbar>
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <mat-card class="w-full max-w-md p-6">
+    <mat-card-header>
+      <mat-card-title class="text-2xl font-semibold text-center w-full">Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex flex-col gap-4">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="loginDto.username" placeholder="Enter username" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="loginDto.password" placeholder="Enter password" required>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="flex justify-between">
+      <button mat-raised-button color="primary" class="bg-blue-500 hover:bg-blue-600" (click)="onLogin()">Login</button>
+      <a routerLink="/register" class="text-blue-500 hover:underline">Register</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
