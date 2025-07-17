@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { TaskDto } from '../models/TaskDto';
 import { AddTaskDto } from '../models/AddTaskDto';
 import { environment } from '../../environments/environment';
+import { DetailTaskDto } from '../models/DetailTaskDto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class TaskService {
     return this.http.get<TaskDto[]>(`${this.apiUrl}/getAll`, { headers: this.getHeaders() });
   }
 
-  getTaskById(id: number): Observable<TaskDto> {
-    return this.http.get<TaskDto>(`${this.apiUrl}/getById?id=${id}`, { headers: this.getHeaders() });
+  getTaskById(id: number): Observable<DetailTaskDto> {
+    return this.http.get<DetailTaskDto>(`${this.apiUrl}/getById?id=${id}`, { headers: this.getHeaders() });
   }
 
   addTask(task: AddTaskDto): Observable<void> {

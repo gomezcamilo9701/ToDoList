@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -37,10 +38,13 @@ export class RegisterComponent {
   onRegister(): void {
     this.authService.register(this.registerDto).subscribe({
       next: () => {
-        this.snackBar.open('Registration successful! Please login.', 'Close', { duration: 3000 });
-        this.router.navigate(['/login']);
+        Swal.fire('¡Éxito!', 'Registro exitoso! Por favor, inicia sesión.', 'success').then(() => {
+          this.router.navigate(['/login']);
+        });
       },
-      error: (err) => this.snackBar.open(err.error || 'Registration failed', 'Close', { duration: 3000 })
+      error: (err) => {
+        Swal.fire('Error', err.error || 'El registro falló', 'error');
+      }
     });
   }
 }

@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Detalles de la Tarea</h2>
+<mat-dialog-content class="flex flex-col gap-4">
+  <p><strong>ID:</strong> {{ task.id }}</p>
+  <p><strong>Estado:</strong> {{ getStateLabel(task.state) }}</p>
+  <p><strong>Descripción:</strong> {{ task.description }}</p>
+  <p><strong>Creado por:</strong> {{ task.createdBy }}</p>
+  <p><strong>Eliminado:</strong> {{ task.isDeleted ? 'Sí' : 'No' }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">Cerrar</button>
+</mat-dialog-actions>

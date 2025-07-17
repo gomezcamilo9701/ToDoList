@@ -1,0 +1,19 @@
+<div class="flex justify-between items-center w-full bg-white p-4 rounded-lg shadow">
+  <div>
+    <h3 class="text-lg font-semibold">Task {{ task.id }} (State: {{ task.state }})</h3>
+    <p class="text-gray-600">{{ task.description }}</p>
+  </div>
+  <div class="flex gap-2">
+    <mat-list-item>
+      <button mat-icon-button (click)="viewDetail.emit(task.id)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <button mat-icon-button (click)="edit.emit(task.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete.emit(task.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </div>
+</div>

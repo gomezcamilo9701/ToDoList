@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,24 +10,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 import { TaskService } from '../../services/task.service';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
 import { AddTaskDto } from '../../models/AddTaskDto';
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  isCompleted: boolean;
-}
+import Swal from 'sweetalert2';
+import { TaskDto } from '../../models/TaskDto';
+import { TaskListItemComponent } from '../task-list-item/task-list-item.component';
+import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
+import { TaskDetailComponent } from '../task-detail/task-detail.component'; // Importar el nuevo componente
+import { TaskState } from '../../enums/TaskState';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
   imports: [
-    FormsModule,
     CommonModule,
+    FormsModule,
+    RouterModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -34,20 +36,30 @@ interface Task {
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule,
+    TaskListItemComponent
   ],
   templateUrl: './task-list.component.html',
   styleUrls: []
 })
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = [];
-  newTask: AddTaskDto = { state: 0, description: '' };
+  tasks: TaskDto[] = [];
+  newTask: AddTaskDto = { state: TaskState.Pending, description: '' };
+  username: string | null = null;
+  protected readonly TaskState = TaskState;
+  taskStates = [
+    { value: TaskState.Pending, label: 'Pendiente' },
+    { value: TaskState.InProgress, label: 'En Progreso' },
+    { value: TaskState.Completed, label: 'Completada' }
+  ];
 
   constructor(
     private taskService: TaskService,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -62,33 +74,57 @@ export class TaskListComponent implements OnInit {
   }
 
   addTask(): void {
+    if (!this.newTask.description) {
+      Swal.fire('Error', 'La descripción es requerida', 'error');
+      return;
+    }
     this.taskService.addTask(this.newTask).subscribe({
       next: () => {
-        this.newTask = { state:  0, description: '' };
+        this.newTask = { state: TaskState.Pending, description: '' };
         this.loadTasks();
-        this.snackBar.open('Task added', 'Close', { duration: 3000 });
+        Swal.fire('Añadido!', 'La tarea ha sido añadida.', 'success');
       },
-      error: (err) => this.snackBar.open('Failed to add task', 'Close', { duration: 3000 })
+      error: (err) => Swal.fire('Error', 'No se pudo añadir la tarea', 'error')
     });
   }
 
-  editTask(task: Task): void {
-    this.taskService.editTask(task).subscribe({
-      next: () => {
+  editTask(id: number): void {
+    this.dialog.open(EditTaskDialogComponent, {
+      width: '400px',
+      data: { taskId: id }
+    }).afterClosed().subscribe(result => {
+      if (result) {
         this.loadTasks();
-        this.snackBar.open('Task updated', 'Close', { duration: 3000 });
-      },
-      error: (err) => this.snackBar.open('Failed to update task', 'Close', { duration: 3000 })
+        Swal.fire('Actualizado!', 'La tarea ha sido actualizada.', 'success');
+      }
+    });
+  }
+
+  viewTaskDetail(id: number): void {
+    this.dialog.open(TaskDetailComponent, {
+      width: '400px',
+      data: { taskId: id }
     });
   }
 
   deleteTask(id: number): void {
-    this.taskService.deleteTask(id).subscribe({
-      next: () => {
-        this.loadTasks();
-        this.snackBar.open('Task deleted', 'Close', { duration: 3000 });
-      },
-      error: (err) => this.snackBar.open('Failed to delete task', 'Close', { duration: 3000 })
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡Esta acción no se puede deshacer!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '¡Sí, elimínala!',
+      cancelButtonText: 'No, mantenla'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.taskService.deleteTask(id).subscribe({
+          next: () => {
+            this.loadTasks();
+            Swal.fire('Eliminado!', 'La tarea ha sido eliminada.', 'success');
+          },
+          error: (err) => Swal.fire('Error', 'No se pudo eliminar la tarea', 'error')
+        });
+      }
     });
   }
 

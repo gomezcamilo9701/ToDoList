@@ -1,6 +1,7 @@
+import { TaskState } from "../enums/TaskState";
+
 export interface TaskDto {
   id: number;
-  title: string;
+  state: TaskState;
   description: string;
-  isCompleted: boolean;
 }

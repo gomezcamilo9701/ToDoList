@@ -38,7 +38,7 @@ export class LoginComponent {
   onLogin(): void {
     this.authService.login(this.loginDto).subscribe({
       next: () => this.router.navigate(['/tasks']),
-      error: (err) => this.snackBar.open(err.error || 'Login failed', 'Close', { duration: 3000 })
+      error: (err) => this.snackBar.open('Username o contraseña incorrecta', 'Close', { duration: 3000 })
     });
   }
 }

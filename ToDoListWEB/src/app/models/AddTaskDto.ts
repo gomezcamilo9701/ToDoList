@@ -1,4 +1,6 @@
+import { TaskState } from "../enums/TaskState";
+
 export interface AddTaskDto {
-  state: number;
+  state: TaskState;
   description: string;
 }
