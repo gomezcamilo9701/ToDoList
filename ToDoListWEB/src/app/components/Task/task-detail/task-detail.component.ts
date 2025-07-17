@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { TaskService } from '../../services/task.service';
-import { DetailTaskDto } from '../../models/DetailTaskDto';
-import { TaskState } from '../../enums/TaskState';
+import { TaskService } from '../../../services/task.service';
+import { DetailTaskDto } from '../../../models/DetailTaskDto';
+import { TaskState } from '../../../enums/TaskState';
 
 @Component({
   selector: 'app-task-detail',

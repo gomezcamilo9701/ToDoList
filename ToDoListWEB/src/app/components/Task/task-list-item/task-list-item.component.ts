@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { TaskDto } from '../../models/TaskDto';
-import { TaskState } from '../../enums/TaskState'; // Importar el enum
+import { TaskDto } from '../../../models/TaskDto';
+import { TaskState } from '../../../enums/TaskState'; // Importar el enum
 
 @Component({
   selector: 'app-task-list-item',

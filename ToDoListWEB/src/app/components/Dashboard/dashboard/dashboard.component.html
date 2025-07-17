@@ -1,0 +1,40 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+  <div class="mb-6">
+    <button mat-raised-button color="primary" routerLink="/tasks">Volver</button>
+  </div>
+  <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <mat-card class="p-4 shadow">
+      <mat-card-header>
+        <mat-card-title>Total de Tareas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-3xl font-bold">{{ totalTasks }}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="p-4 shadow">
+      <mat-card-header>
+        <mat-card-title>Tareas Completadas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-3xl font-bold">{{ completedTasks }}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="p-4 shadow">
+      <mat-card-header>
+        <mat-card-title>Tareas Pendientes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-3xl font-bold">{{ pendingTasks }}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="p-4 shadow">
+      <mat-card-header>
+        <mat-card-title>Tareas en Progreso</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-3xl font-bold">{{ inProgressTasks }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

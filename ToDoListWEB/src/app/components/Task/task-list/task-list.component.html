@@ -1,8 +1,11 @@
-<mat-toolbar class="bg-gray-800 text-white flex justify-between items-center">
-  <span class="text-xl font-bold">My Tasks - {{ username || 'Guest' }}</span>
-  <button mat-icon-button (click)="onLogout()" class="text-white">
-    <mat-icon>logout</mat-icon>
-  </button>
+<mat-toolbar class="bg-gray-800 text-white flex justify-center items-center md:justify-between">
+  <span class="text-xl font-bold">My Tasks</span>
+  <div class="flex gap-2">
+    <button mat-raised-button color="primary" routerLink="/dashboard" class="ml-2">Dashboard</button>
+    <button mat-icon-button (click)="onLogout()" class="text-white">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 <div class="p-6 bg-gray-100 min-h-screen">
   <div class="flex justify-center mb-6">

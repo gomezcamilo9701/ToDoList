@@ -12,15 +12,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { TaskService } from '../../services/task.service';
-import { AuthService } from '../../services/auth.service';
-import { AddTaskDto } from '../../models/AddTaskDto';
+import { TaskService } from '../../../services/task.service';
+import { AuthService } from '../../../services/auth.service';
+import { AddTaskDto } from '../../../models/AddTaskDto';
 import Swal from 'sweetalert2';
-import { TaskDto } from '../../models/TaskDto';
+import { TaskDto } from '../../../models/TaskDto';
 import { TaskListItemComponent } from '../task-list-item/task-list-item.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
-import { TaskDetailComponent } from '../task-detail/task-detail.component'; // Importar el nuevo componente
-import { TaskState } from '../../enums/TaskState';
+import { TaskDetailComponent } from '../task-detail/task-detail.component';
+import { TaskState } from '../../../enums/TaskState';
 
 @Component({
   selector: 'app-task-list',

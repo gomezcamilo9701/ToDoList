@@ -6,10 +6,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { TaskDto } from '../../models/TaskDto';
-import { DetailTaskDto } from '../../models/DetailTaskDto';
-import { TaskState } from '../../enums/TaskState';
-import { TaskService } from '../../services/task.service';
+import { TaskDto } from '../../../models/TaskDto';
+import { DetailTaskDto } from '../../../models/DetailTaskDto';
+import { TaskState } from '../../../enums/TaskState';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'app-edit-task-dialog',
